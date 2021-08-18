@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <!--To declare parameters-->
+        <param-name>dburl</param-name>
+        <!--Name of parameter-->
+        <param-value>jdbc:mysql://localhost/myproj</param-value>
+        <!--Value of parameter-->
+    </context-param>
+    <!--THIS IS CALLED IN LOGINAJAX,,,,SEE REST CODING THERE-->
+    <context-param>
+        <!--so no need of dbvars.jsp page-->
+        <param-name>dbuname</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbpass</param-name>
+        <param-value/>
+    </context-param>
+    <servlet>
+        <!-- we make new servlet here-->
+        <servlet-name>servlet1</servlet-name>
+        <!-- we name our servlet here-->
+        <servlet-class>ourservlets.myservlet</servlet-class>
+        <!--here we write our file whose servlet is to be made-->
+    </servlet>
+    <servlet>
+        <servlet-name>loginservlet</servlet-name>
+        <servlet-class>ourservlets.loginservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!-- Defines the url pattern of the servlet-->
+        <servlet-name>servlet1</servlet-name>
+        <!--Name of servlet on which you want to do mapping-->
+        <url-pattern>/first.php</url-pattern>
+        <!--our url pattern(to fool others)-->
+    </servlet-mapping>
+    <servlet>
+        <!-- we make new servlet here-->
+        <servlet-name>servlet2</servlet-name>
+        <!-- we name our servlet here-->
+        <servlet-class>ourservlets.myservlet2</servlet-class>
+        <!--here we write our file whose servlet is to be made-->
+    </servlet>
+    <servlet-mapping>
+        <!-- Defines the url pattern of the servlet-->
+        <servlet-name>servlet2</servlet-name>
+        <!--Name of servlet on which you want to do mapping-->
+        <url-pattern>/second.php</url-pattern>
+        <!--our url pattern(to fool others)-->
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginservlet</servlet-name>
+        <url-pattern>/abc.php</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>loginservlet1</servlet-name>
+        <servlet-class>hibernate.loginservlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!-- Defines the url     pattern of the servlet-->
+        <servlet-name>loginservlet1</servlet-name>
+        <!--Name of servlet on which you want to do mapping-->
+        <url-pattern>/abcd.php</url-pattern>
+        <!--our url pattern(to fool others)-->
+    </servlet-mapping>
+    
+    <session-config>
+        <session-timeout><!--here there is default timeout of the session after 30 mins,you can change it,,this is done in config tag--> 
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
